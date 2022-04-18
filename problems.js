@@ -7,8 +7,8 @@
   Write a function `plusTen` that takes in a number as an argument and
   returns the sum of that number and 10.
 */
-function plusFive(num) {
-  return num + 5;
+function plusTen(num) {
+  return num + 10;
 }
 
 /*
@@ -20,12 +20,14 @@ function plusFive(num) {
   Write a function `returnSevens(max)` that returns an array that contains
   multiples of 7 that are less than max.
 */
-function printFives(max) {
+function returnSevens(max) {
+  const sevens = [];
   for (let i = 0; i < max; i++) {
-    if (i % 5 === 0) {
-      console.log(i);
+    if (i % 7 === 0) {
+      sevens.push(i);
     }
   }
+  return sevens;
 }
 
 /*
@@ -41,8 +43,8 @@ function printFives(max) {
   function should return `true` if *both* `word1` and `word2` are found in
   the sentence, and `false` if neither or only 1 is found.
 */
-function eitherStringIncluded(sentence, word1, word2) {
-  return sentence.includes(word1) || sentence.includes(word2);
+function bothStringsIncluded(sentence, word1, word2) {
+  return sentence.includes(word1) && sentence.includes(word2);
 }
 
 /*
@@ -55,12 +57,13 @@ function eitherStringIncluded(sentence, word1, word2) {
   returns the product of all the numbers. The product of an array  is the number
   you get when you multiply all the numbers together.
 */
-function sumArray(arr) {
-  let sum = 0;
+function productArray(arr) {
+  if (!arr.length) return 0;
+  let product = 1;
   for (let i = 0; i < arr.length; i++) {
-    sum += arr[i];
+    product *= arr[i];
   }
-  return sum;
+  return product;
 }
 
 /*
@@ -72,8 +75,8 @@ function sumArray(arr) {
   Write a function `fiveAndEleven` that takes in a number and returns `true`
   if the number is divisible by BOTH 5 and 11 and `false` otherwise.
 */
-function threeOrSeven(num) {
-  return num % 3 === 0 || num % 7 === 0;
+function fiveAndEleven(num) {
+  return num % 55 === 0;
 }
 
 /*
@@ -85,11 +88,11 @@ function threeOrSeven(num) {
   Write a function, `countConsonants(word)`, that takes in a string word and
   returns the number of consonants in the word.
 */
-function countVowels(word) {
-  const vowels = ["a", "e", "i", "o", "u"];
+function countConsonants(word) {
+  const consonants = "bcdfghjklmnpqrstvwxyz";
   let count = 0;
   for (let i = 0; i < word.length; i++) {
-    if (vowels.includes(word[i])) {
+    if (consonants.includes(word[i])) {
       count++;
     }
   }
@@ -112,8 +115,14 @@ function countVowels(word) {
   `.split('')` function on strings to make a copy of the string as an array.
   The `.join('')` function joins the elements in an array into a string.
 */
-function whisper(str) {
-  return str.toLowerCase();
+function alternatingLetters(str) {
+  const chars = str.split("");
+  for (let i = 0; i < chars.length; i++) {
+    i % 2 === 0
+      ? (chars[i] = chars[i].toLowerCase())
+      : (chars[i] = chars[i].toUpperCase());
+  }
+  return chars.join("");
 }
 
 module.exports = {
